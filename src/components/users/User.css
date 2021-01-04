@@ -1,0 +1,149 @@
+
+
+.userRadio{
+    margin-right: 20px;
+}
+
+.userTableContainer{
+    width: fit-content;
+    margin: auto;
+}
+
+.userInfo {
+    margin-right: 40px;
+}
+
+td {
+    width: 10em;
+    border: 1px solid lightgray;
+    padding-left: 10px;
+}
+
+.userRadioInfo {
+    width: 15em;
+}
+
+.profile__img {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-self: flex-start;
+    justify-self: center;
+    transform: scale(1.5, 1.5);
+    cursor: pointer;
+    z-index: 5;
+    margin: 3rem;
+}
+
+.image{
+    z-index: 5;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+    border: solid 1px black;
+    margin: -.25rem;
+}
+
+.profile-container{
+    width: 100%;
+    height: 100%;
+    top: 15%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+.profile__articles{
+    color: rgb(1, 36, 1);
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: .35s;
+}
+
+.profile__articles:hover{
+    color: rgb(160, 158, 158);
+    transform-origin: center;
+    transform: scale(1.02, 1.02);
+}
+
+.left-spacer,
+.right-spacer {
+    width: 25%;
+    height: 100%;
+}
+
+.profile {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-self: center;
+    max-width: 50%;
+    min-width: 635px;
+}
+
+.profile__info-right {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 1rem;
+    justify-content: center;
+}
+
+.profile__info-left {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 1rem;
+}
+
+.top{
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 1rem;
+    justify-content: center;
+}
+
+.bottom{
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 1rem;
+}
+.mem-since,
+.email,
+.profile_type {
+    margin: -.15rem 0;
+}
+
+.profile__username {
+    font-size: 25px;
+    font-weight: 600;
+    margin: .5rem 0;
+}
+
+.profile__name{
+    font-size: smaller;
+    margin-top: -.5rem;
+    margin-left: .25rem;
+}
+
+.profile__articles {
+    text-decoration: none;
+    color: black;
+    font-size: smaller;
+    margin: -.15rem 0;
+}
+
+.subscribe {
+    text-align: center;
+    position: absolute;
+    right: 30%;
+    max-width: 130px;
+    border-radius: .35rem;
+    background-color: rgb(228, 228, 228);
+    color: black;
+    border: 1px solid black;
+}
+.clickable-author-user{
+    cursor: pointer;
+}

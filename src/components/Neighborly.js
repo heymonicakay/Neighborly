@@ -1,55 +1,48 @@
-import React from "react"
+import React, {useContext} from "react"
 import { Route, Redirect } from "react-router-dom"
 import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
-import "./Rare.css"
-import { UserProvider } from "./users/UserProvider"
+import "./Neighborly.css"
+import { UserContext } from "./users/UserProvider"
 
-export const Rare = () => (
-    <>
-        <Route render={() => {
-            if (localStorage.getItem("rare_token")) {
+export const Neighborly = () => {
+    const {token} = useContext(UserContext)
 
-                return (
-                    <>
-                    <UserProvider>
-                        <Route render={props =>
-                            <ApplicationViews
-                            {...props}  />} />
-
-                    </UserProvider>
-                    </>
-                )
-            }
-            else {
-                return <Redirect to="/login" />
-            }
-        }} />
-
-        <Route path="/login" render={(props) => {
-            if (localStorage.getItem("rare_token")) {
-                return <Redirect to="/rare" />
-            } else {
-                return (
-                <>
-                <UserProvider>
-                    <Login {...props} />
-                </UserProvider>
-                </>
-                )
-            }
-        }} />
-
+    return(<>
         <UserProvider>
-            <Route path="/register" render={(props) => {
-                if (localStorage.getItem("rare_token")) {
-                    return <Redirect to="/rare" />
+            <Route render={() => {
+                if (token) {
+                    return (
+                        <Route render={props => <ApplicationViews {...props}  />}/>
+                    )
+                }
+                else {
+                    return <Redirect to="/login" />
+                }
+            }} />
+
+            <Route path="/login" render={props => {
+                if (token) {
+                    return <Redirect to="/explore" />
+                }
+                else {
+                    return (
+                        <Login {...props} />
+                    )
+                }
+            }} />
+
+            <Route path="/register" render={props => {
+                if (token) {
+                    return <Redirect to="/explore" />
                 }
                 else {
                     return <Register {...props}/>
                 }
             }} />
         </UserProvider>
-    </>
-)
+    </>)
+}
+
+

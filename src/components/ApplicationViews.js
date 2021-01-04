@@ -8,11 +8,6 @@ export const ApplicationViews = (props) => {
     return (
         <>
             <main className="main-container" style={{ margin: "0 0", lineHeight: "1.75rem", }}>
-                <NavRoutes />
-                <TagRoutes />
-                <CategoryRoutes />
-                <PostRoutes />
-                <CommentRoutes />
                 <UserProfileRoutes />
             </main>
         </>

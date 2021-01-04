@@ -1,0 +1,169 @@
+.h1, h1 {
+    font-size: 2.5rem;
+}
+
+.input__container{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.username-login:focus,
+.pw-login:focus,
+.first_name:focus,
+.last_name:focus,
+.email:focus,
+.username-register:focus,
+.pw-register:focus,
+.pw-verify:focus,
+.bio:focus {
+    outline: none;
+    border-color: rgba(29, 29, 29, 0.795)
+
+}
+.username-login,
+.pw-login,
+.first_name,
+.last_name,
+.username-register,
+.pw-register,
+.pw-verify,
+.bio,
+.email,
+.username-register,
+.pw-register,
+.pw-verify,
+.bio {
+    border-color: rgba(211, 211, 211, 0.685);
+}
+.form--login {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+.image_login{
+    height: 400px;
+    width: 400px;
+    transition: .35s;
+    transform: scale(.8, .8);
+    background-color: transparent;
+    background: url("./neighborly_logo.png") no-repeat center;
+    background-size: cover;
+    margin-bottom: -2rem;
+}
+.register--contain{
+    display:flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: center;
+}
+.image_register{
+    height: 400px;
+    width: 400px;
+    transition: .35s;
+    transform: scale(.8, .8);
+    background-color: transparent;
+    background: url("./neighborly_logo.png") no-repeat center;
+    background-size: cover;
+    margin-bottom: -2rem;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.form-control::placeholder {
+    font-style: italic;
+}
+.form--register{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.container--login {
+    text-align: center;
+    overflow: hidden;
+}
+.input__wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 40%;
+    justify-content: center;
+    align-content: center;
+}
+.input__container--left{
+    margin-right: 2rem;
+    width: 20%;
+}
+.input__container--right{
+    margin-left: 2rem;
+    width: 20%;
+
+}
+.form--login {
+    z-index: 1;
+    min-height: 25rem;
+    min-width: 25rem;
+}
+
+.button--close {
+    position: relative;
+    bottom: -2rem;
+}
+
+.dialog {
+    min-width: 15rem;
+    min-height: 5rem;
+}
+
+.login-button {
+    width: 100%;
+    background-color: transparent;
+    border: solid purple 2px;
+    color: purple;
+    transform:translateX(15px);
+    margin-top: 1rem;
+    transition: .25s;
+
+}
+
+.login-button:hover {
+    background-color: purple;
+}
+
+.link--register,
+.link--register-clickable {
+    width: 100%;
+    text-align: center;
+    transform:translateX(10px);
+    margin-top: .5rem;
+    text-decoration: none;
+    color: rgba(95, 0, 95, 0.61);
+    transition: .25s;
+}
+
+.link--register-clickable:hover{
+    color: purple;
+    transform: scale(1.05, 1.05)
+}
