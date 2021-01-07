@@ -34,6 +34,14 @@ export const UserProvider = (props) => {
             })
     }
 
+    const getUserMessages = () => {
+        return fetch("http://localhost:8000/messages", {
+            headers: {
+                "Authorization": `Token ${token}`,
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+    }
     // const getUserProfile = (userId) => {
     //     return fetch(`http://localhost:8000/users/${userId}`, {
     //         headers: {
@@ -98,7 +106,8 @@ export const UserProvider = (props) => {
             getCurrentUser,
             setCurrentUser,
             token,
-            setToken
+            setToken,
+            getUserMessages
             // changeUserType,
             // changeUserActive,
             // getUserProfile,
