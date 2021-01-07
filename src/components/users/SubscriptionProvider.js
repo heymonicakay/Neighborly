@@ -3,7 +3,7 @@
 
 // export const SubscriptionProvider = (props) => {
 //     const api = 'http://localhost:8000/subscriptions'
-//     const token = localStorage.getItem("rare_token")
+//     const token = localStorage.getItem("token")`,
 
 //     const [subscriptions, setSubscriptions] = useState([])
 //     const [subscription, setSubscription] = useState({})

@@ -1,0 +1,468 @@
+a {
+    text-decoration: none;
+    color: #404040;
+}
+.item {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.contain__btn--edit-delete-item {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.item-author {
+    display: flex;
+    margin-bottom: -20px;
+    font-size: 1.25rem;
+}
+
+.mainItemContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: center;
+}
+.itemForm_title{
+    font-size:30px;
+}
+
+.cat-link {
+    color: rgb(1, 36, 1);
+    text-decoration: none;
+    font-weight: 900;
+    transition: .35s;
+}
+.cat-link:hover {
+    color: rgb(160, 158, 158);
+    transform-origin: center;
+    transform: scale(1.02, 1.02);
+}
+.itemLink {
+    color: rgb(1, 36, 1);
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.item-list-top{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+    height: 10%;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.item-title-wrapper{
+    display: flex;
+    justify-content: flex-start;
+}
+.item-title-link {
+    text-decoration: none;
+}
+.item-title-text,
+.publication-date,
+.published-unpublished {
+    font-size: 15px;
+    color: #8e0000;
+    height: 100%;
+    transition: .35s;
+
+}
+.item-date-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+.publication-date-text,
+.publication-date,
+.unpublished-text {
+    font-size: 12px;
+    color: #8e0000;;
+    height: 100%;
+}
+.publication-date-text{
+    margin-right: .3rem;
+}
+.middle{
+    display: flex;
+    justify-content: center;
+}
+.item-image-container {
+    display: flex;
+    align-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 70%;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.item-image {
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    margin: auto;
+    object-fit:cover;
+    object-position: center;
+}
+
+.lowerhalf {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .25rem;
+}
+
+.lower-left-item {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.itemed-in,
+.category-label-link,
+.category-label-text,
+.author-name,
+.toggle-approved {
+    margin-right: .28rem;
+    display: flex;
+    font-size: 15px;
+    align-content: center;
+    transition: .35s;
+
+}
+
+.author-name:hover,
+.category-label-text:hover,
+.toggle-approved:hover,
+.item-title-text:hover {
+    color: rgb(160, 158, 158);
+    transform-origin: center;
+    transform: scale(1.02, 1.02);
+}
+
+.toggle-approved {
+    cursor: pointer;
+    align-self: center;
+    text-transform: uppercase;
+    font-size: smaller;
+}
+
+.new_item_form {
+    width: 45em;
+    margin: auto;
+}
+
+.check-approve{
+    cursor: pointer;
+}
+
+.item-title,
+.are-u-sure {
+    cursor: pointer;
+    font-size: 25px;
+    text-align: left;
+    font-weight: 1500 !important;
+}
+
+.item-list-single {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    border: solid black 2px;
+    margin-right: 5%;
+    min-height: 300px;
+    max-height: 400px;
+    width: 100%;
+    padding: 0 2%;
+    margin-bottom: 3%;
+    overflow: hidden;
+}
+.itemDetailContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    align-content: center;
+    border-right: 1px solid  rgba(197, 197, 197, 0.568);
+
+}
+.dot-dot-dot{
+    display: flex;
+    align-self: center;
+    cursor: pointer;
+}
+.dot-w {
+    height: 7px;
+    width: 7px;
+    margin: 3px;
+    border-radius: 25rem;
+    background-color: white;
+}
+.upperhalf{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.item-buttons{
+    display: flex;
+    flex-flow: row nowrap
+}
+
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin: 3px;
+    border-radius: 25rem;
+    background-color: #8e0000;
+}
+.dot-div {
+    height: 5px;
+    width: 5px;
+    margin: 0px 20px;
+    border-radius: 25rem;
+    background-color: #8e0000;
+    display: flex;
+    align-self: center;
+
+}
+
+.author_date_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.authorName {
+    margin-right: 1rem;
+    padding: -1rem;
+}
+
+.itemContent {
+    text-align: left;
+    text-indent: 5rem;
+    max-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.item-item {
+    border: 1px solid black;
+    margin: .5rem;
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+}
+.btn__item-edit,
+.btn__item-delete {
+    cursor: pointer;
+}
+.cat-on-item{
+    font-weight: 1000 !important;
+    font-family: "Comfortaa";
+    margin-left: .35rem;
+}
+
+.newItembtn {
+    width: 120px;
+    margin-left: 55rem;
+    background-color: transparent;
+    color: #8e0000;
+    position: absolute;
+    right: 20%;
+    transform: translateY(-150%);
+}
+.item-image{
+    width: 100px;
+    height: 100px;
+}
+.my-items-heading {
+    text-align: center;
+    margin: .5rem;
+    font-size: 30px !important;
+    font-weight: 800 !important;
+}
+.itemTagContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-left: .5rem;
+    margin-top: 2rem;
+    text-align: left;
+    margin-right: auto;
+}
+.form-control:focus{
+    outline: none;
+    border-color: rgba(29, 29, 29, 0.795)
+}
+.form-control{
+    border-color: rgba(211, 211, 211, 0.685);
+
+}
+.itemFlex {
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+}
+.item-tags-container {
+    width: 10em;
+}
+
+.flexLeftSpace {
+    flex-basis: 20%;
+}
+.tag-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+.item_submit_btn{
+    margin-top: 1rem;
+
+}
+.tag-on-item{
+    margin-left: 1rem;
+}
+.checkbox-tag{
+    margin-right: .30rem;
+}
+.edit-item-tags-bttn {
+    background-color: white;
+    color: #8e0000;
+    border: #8e0000 1px solid;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.edit-item-tags-bttn:hover {
+    background-color: rgb(141, 106, 17);
+    border: none;
+    color: white;
+}
+.manage-buttons {
+    transform: translateY(4.5rem);
+}
+
+.manage-buttons.top-align {
+    transform: none;
+}
+
+.reactionContainer {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    border: solid 1px;
+    border-radius: 10px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-top: .5rem;
+}
+
+.reaction-wrapper {
+    margin: 0 .15rem;
+}
+
+.reaction-img:hover{
+    cursor: pointer;
+}
+
+.reaction-img{
+    height: 20px;
+    width: 20px;
+}
+
+.reaction-count {
+    font-size: smaller;
+    font-weight: bold;
+    margin: .15rem;
+}
+
+.img-div {
+    width: auto;
+    height: 300px;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+}
+.item-img {
+    position: absolute;
+    left: -1000%;
+    right: -1000%;
+    top: -1000%;
+    bottom: -1000%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px darkslategrey;
+    border-radius: 10px;
+    border: solid black 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background:white;
+    border-radius: 10px;
+    border: solid black 1px;
+}
+
+.itemTitleContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+.formImage{
+    height: 300px;
+}
+
+.header-image-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn__item-edit,
+.btn__item-delete {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    transition: .35s;
+    opacity: .6;
+    transform: scale(.8, .8);
+    background-color: transparent;
+}
+.btn__item-edit {
+    background: url("../tags/gear_icon.png") no-repeat center;
+    background-size: cover;
+}
+.btn__item-delete{
+    background: url("../tags/trashcan_icon.png") no-repeat center;
+    background-size: cover;
+}
+.btn__item-edit:hover,
+.btn__item-delete:hover {
+    background-color: transparent;
+    opacity: 1;
+}

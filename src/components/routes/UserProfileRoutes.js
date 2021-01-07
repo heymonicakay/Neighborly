@@ -6,9 +6,9 @@ import { UserProfile } from "../users/UserProfile"
 export default () => {
     return (
         <>
-            <Route exact path="/users" render={(props) =>
+            <Route exact path="/users" render={props =>
                 <UsersList {...props} />}/>
-            <Route exact path="/users/:userId(\d+)" render={(props) =>
+            <Route exact path="/users/:userId(\d+)" render={props =>
                 <UserProfile {...props} />}/>
         </>
     )

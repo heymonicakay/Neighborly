@@ -1,8 +1,10 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect, useContext } from "react"
+import { UserContext } from '../users/UserProvider'
 import { Link } from "react-router-dom"
 import "./Auth.css"
 
 export const Register = (props) => {
+    const { setToken } = useContext(UserContext)
 
     const [profileImg, setProfileImg] = useState('')
     const [image, setImage] = useState('')
@@ -91,7 +93,7 @@ export const Register = (props) => {
             }).then(res => res.json())
                 .then(res => {
                     setToken(res.token)
-                    patchImage(res.token).then(()=>props.history.push("/explore"))
+                    patchImage(res.token).then(()=>props.history.push("/items"))
                 })
         }
         else {

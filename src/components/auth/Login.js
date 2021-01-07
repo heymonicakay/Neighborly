@@ -8,7 +8,7 @@ export const Login = (props) => {
     const password = useRef(null)
     const invalidDialog = useRef(null)
 
-    const {setToken} = useContext(UserContext)
+    const {getCurrentUser} = useContext(UserContext)
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -26,8 +26,8 @@ export const Login = (props) => {
         }).then(res => res.json())
         .then(res => {
             if ("valid" in res && res.valid && "token" in res) {
-                setToken(res.token)
-                props.history.push("/explore");
+                localStorage.setItem("token", res.token)
+                getCurrentUser(res.token).then(props.history.push("/items"))
             }
             else {
                 invalidDialog.current.showModal();
@@ -50,8 +50,8 @@ export const Login = (props) => {
                             type="text"
                             id="username"
                             className="form-control username-login"
-                            defaultValue="sortinghat"
-                            placeholder="Username"
+                            defaultValue="harrypotter"
+                            placeholder="username"
                             required
                             autoComplete="off"
                             spellCheck="off"
@@ -62,8 +62,8 @@ export const Login = (props) => {
                             className="form-control pw-login"
                             autoComplete="off"
                             spellCheck="off"
-                            defaultValue="pw"
-                            placeholder="Password"
+                            defaultValue="harry"
+                            placeholder="password"
                             required />
                     </div>
                     <div className="button__container">

@@ -1,0 +1,130 @@
+.nav,
+.nav__inner {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+    max-height: 100%;
+    background-color: white;
+    min-width: 1200px;
+}
+
+.spacer__nav--left,
+.spacer__nav--right,
+.spacer__nav--middle{
+    width: 10%;
+    height: 100%;
+}
+
+.nav__logo {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-self: flex-start;
+    justify-self: center;
+    transform: scale(1.5, 1.5);
+    cursor: pointer;
+}
+
+.logo-wrapper {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.top-space,
+.bottom-space {
+    width: 100%;
+    height: 25%;
+}
+
+.middle-wrap {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 50%;
+}
+
+.wrapper__nav--right{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 50%;
+    justify-content: flex-end;
+    align-content: flex-end;
+}
+
+.right-middle {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper__nav--right {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.cont--nav {
+    display: flex;
+    flex-flow: row nowrap;
+    width: -webkit-fill-available;
+    height: 15%;
+    background-color: white;
+    z-index: 2;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.nav__link-wrapper{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: space-evenly;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 515px;
+}
+.admin-nav-link-wrap{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: space-evenly;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 800px;
+}
+.all-items,
+.my-items {
+    min-width: 100px;
+}
+.nav__btn {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 200;
+    padding: .5rem;
+    margin-right: 1rem;
+    text-align: center;
+    background-color: white !important;
+    color:#8e0000 !important;
+    border-radius: .35rem;
+    border: solid #8e0000 1px;
+    outline: none;
+}
+.new-item{
+    width: 30px;
+    height: 30px;
+    border-radius: 25rem;
+    line-height: 14px;
+    font-size: 20px;
+}
+
+.logout{
+    background-color: #8e0000 !important;
+    color: white !important;
+    min-width: 80px;
+}

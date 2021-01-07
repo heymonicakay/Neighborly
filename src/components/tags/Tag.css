@@ -1,0 +1,230 @@
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+.tag-input:focus {
+    outline: none;
+    border-color: rgba(29, 29, 29, 0.795)
+
+}
+
+.tag-input {
+    border-color: rgba(211, 211, 211, 0.685);
+}
+
+.tags {
+    text-align: center;
+    width: 50%;
+}
+.tag-list__heading {
+    font-size: 30px;
+}
+.create-tagForm_label{
+    font-size: 25px;
+    margin-bottom: .5rem;
+}
+/* STYLING INDIVIDUAL TAGS IN TAG LIST */
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+}
+.tag-label__container {
+    border: solid rgba(0, 0, 0, 0.712) 1px;
+    padding: 9px 20px;
+    width: 100%;
+}
+.tag__label{
+    font-size: 25px;
+    margin: 0 0;
+    pointer-events: none;
+}
+
+.tagList-containerFlex{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* STYLING TAG EDIT/DELETE FORMS */
+.edit-tag-form__container,
+.delete-tag-form__container {
+    position: absolute;
+    display: flex;
+    top: 15%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    justify-content: center;
+    align-content: center;
+    background-color: rgba(255, 255, 255, 0.774);
+    z-index: 6;
+}
+.new_tag_form{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 4%;
+    text-align: center;
+    max-width: 400px;
+    min-width: 350px;
+    max-height: 250px;
+    min-height: 200px;
+}
+.fade-in {
+    animation: fadeIn .35s;
+}
+.fade-out {
+    animation: fadeOut .35s;
+}
+
+.change_tag_form,
+.remove_tag_form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 4%;
+    text-align: center;
+    background-color: gray !important;
+    color: white !important;
+    max-width: 250px;
+    min-width: 225px;
+    max-height: 175px;
+    min-height: 150px;
+    position: absolute;
+    top: 5%;
+    z-index: 6;
+}
+
+.toprow {
+    display: flex;
+    flex-flow: row;
+}
+.toprowblank{
+    width: 90%;
+}
+.x {
+    cursor: pointer;
+    width: 10%;
+    position: absolute;
+    right: 5%;
+    top: 7%;
+    font-size: larger;
+}
+.tagForm_label {
+    font-size: 20px;
+    margin: 0;
+    pointer-events: none;
+}
+.deleteTagForm_label{
+    font-size: 18px;
+    margin: 0;
+    pointer-events: none;
+}
+.input__container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 1rem;
+}
+.edit-tag-input:focus {
+    outline: none;
+}
+.delete-tag-form__tag {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 25px;
+    pointer-events: none;
+}
+.button__container{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+.edit-tag-form__cancel,
+.edit-tag-form__save,
+.delete-tag-form__save,
+.delete-tag-form__cancel {
+    min-width: 90px;
+    max-width: 115px;
+    height: 40px;
+    outline: none;
+    font-size: 14px;
+}
+.create-tag__btn {
+    min-width: 80px;
+    max-width: 100px;
+    height: 40px;
+    outline: none;
+    font-size: 18px;
+    cursor:pointer;
+    border-radius: .35rem;
+    margin-right: 0;
+}
+.create-tag__btn:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+.edit-tag-form__save:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100%{
+        opacity: 0
+    }
+}
+
+/* STYLING FOR EDIT AND DELETE BUTTONS */
+.edit-tag__button,
+.delete-tag__button {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-size: cover;
+    background-color: transparent;
+    transition: .35s;
+    opacity: .6;
+    transform: scale(.8, .8);
+    z-index:5;
+}
+.edit-tag__button {
+    background: url("./gear_icon.png") no-repeat center;
+}
+.delete-tag__button {
+    background: url("./trashcan_icon.png") no-repeat center;
+}
+.edit-tag__button:hover,
+.delete-tag__button:hover {
+    background-color: transparent;
+    opacity: 1;
+}
+.edit-tag-button__spacer,
+.delete-tag-button__spacer{
+    height: 20px;
+    width: 20px;
+}
+

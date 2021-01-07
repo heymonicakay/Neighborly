@@ -2,12 +2,15 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { BrowserRouter as Router } from "react-router-dom"
 import { Neighborly } from "./components/Neighborly"
+import {UserProvider } from './components/users/UserProvider'
 import "./index.css"
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <Neighborly />
+            <UserProvider>
+                <Neighborly />
+            </UserProvider>
         </Router>
     </React.StrictMode>,
     document.getElementById("root")

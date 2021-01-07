@@ -1,42 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+/*Typography
+--------------------------------------------------------------*/
 
-/*-------------PROPERTIES TO EXPLORE-------------------*
-    caret-color - Specifies the color of the cursor (caret) in inputs, textareas, or any element that is editable
-    CSS Counter - https://www.w3schools.com/cssref/pr_gen_counter-increment.asp
-    mix-blend-mode - The mix-blend-mode property specifies how an element's content should blend with its background
-    
-    EASIER WAY TO CENTER -
-        .whatever-element {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
-
- ------------------------------------------------------*/
-/*---------------------------------------------
-                                    TYPOGRAPHY
------------------------------------------------*/
-body,
-button,
-input,
-select,
-textarea {
+body, button, input, select, textarea {
     color: #404040;
     font-family: "Comfortaa", Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
-    letter-spacing: 1px;
     padding: 0;
     margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: "Patua One", serif;
     letter-spacing: 2px;
 }
@@ -46,31 +21,6 @@ code {
     monospace;
 }
 
-/*---------------------------------------------
-                            GENERAL BUTTON STYLE
------------------------------------------------*/
-
-.btn {
-	border: none;
-	font-family: Menlo;
-	font-size: inherit;
-	color: inherit;
-	background: none;
-	cursor: pointer;
-    padding: 0.35rem 1.5rem;
-	display: inline-block;
-	margin: 0.5rem 0.5rem;
-	text-transform: lowercase;
-	letter-spacing: 1px;
-	font-weight: 500;
-	outline: none;
-	position: relative;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
+.nav-item {
+    list-style-type: none;
 }
-
-.btn:hover {
-    box-shadow: 0.25rem 0.25rem 0.4rem #90969b;
-}
-

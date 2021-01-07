@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react"
 import DefaultProfileImage from "./default_profile_image.jpg"
 import { Link } from "react-router-dom"
 import { UserContext } from "./UserProvider"
-import { SubscribeButton } from "./SubscribeButton"
+// import { SubscribeButton } from "./SubscribeButton"
 import "./User.css"
 
 export const UserProfile = (props) => {
@@ -12,27 +12,26 @@ export const UserProfile = (props) => {
     const [DD, setDD] = useState("00")
     const [MM, setMM] = useState("00")
     const [YYYY, setYYYY] = useState("0000")
-    const [postCount, setPostCount] = useState(0)
+    const [itemCount, setItemCount] = useState(0)
     const [plural, setPlural] = useState("")
     const [currentUser, setCurrentUser] = useState({})
 
     const userId = parseInt(props.match.params.userId)
     useEffect(() => {
-        getUserProfile(userId).then(setProfile)
-        getCurrentUser().then(setCurrentUser)
+        getUserProfile(userId)
     }, [])
 
     useEffect(()=>{
-        if(postCount === 0){
-            setPostCount(null)
+        if(itemCount === 0){
+            setItemCount(null)
         }
-        if(postCount === 1){
-            setPlural("post")
+        if(itemCount === 1){
+            setPlural("item")
         }
-        if(postCount > 1){
-            setPlural("posts")
+        if(itemCount > 1){
+            setPlural("items")
         }
-    }, [postCount])
+    }, [itemCount])
 
     useEffect(()=> {
         if(profile && profile.date_joined){
@@ -58,9 +57,9 @@ export const UserProfile = (props) => {
             const image = profile.images[0].image
             setImage(image)
         }
-        if(profile && profile.posts){
-            const count = profile.posts.length
-            setPostCount(count)
+        if(profile && profile.items){
+            const count = profile.items.length
+            setItemCount(count)
         }
     }, [profile])
 
@@ -70,12 +69,12 @@ export const UserProfile = (props) => {
             <div className="left-spacer"></div>
                 <article className="profile">
 
-                    {profile &&
+                    {/* {profile &&
                         <SubscribeButton
                         currentUser={currentUser}
                         author_id={userId}
                         {...props} />
-                    }
+                    } */}
 
                     <div className="top">
                         <section className="profile__info-left">
@@ -108,12 +107,12 @@ export const UserProfile = (props) => {
                             }
                             </div>
                             <Link
-                            title={`Click to view posts by ${profile.username}`}
+                            title={`Click to view items by ${profile.username}`}
                             className="profile__articles"
-                            to={{ pathname: `/posts/user/${profile.id}`,
+                            to={{ pathname: `/items/user/${profile.id}`,
                             state: {userId: `${profile.id}`,
                             name:`${profile.username}`}}} >
-                                {postCount} {plural}
+                                {itemCount} {plural}
                             </Link>
                         </section>
                     </div>

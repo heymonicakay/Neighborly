@@ -129,7 +129,7 @@ td {
 
 .profile__articles {
     text-decoration: none;
-    color: black;
+    color: #8e0000;
     font-size: smaller;
     margin: -.15rem 0;
 }
@@ -141,7 +141,7 @@ td {
     max-width: 130px;
     border-radius: .35rem;
     background-color: rgb(228, 228, 228);
-    color: black;
+    color: #8e0000;
     border: 1px solid black;
 }
 .clickable-author-user{

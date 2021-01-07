@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useState} from "react"
 import { Route, Redirect } from "react-router-dom"
 import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./auth/Login"
@@ -7,41 +7,19 @@ import "./Neighborly.css"
 import { UserContext } from "./users/UserProvider"
 
 export const Neighborly = () => {
-    const {token} = useContext(UserContext)
-
+    const [token, setToken] = useState(localStorage.getItem("token"))
     return(<>
-        <UserProvider>
-            <Route render={() => {
-                if (token) {
-                    return (
-                        <Route render={props => <ApplicationViews {...props}  />}/>
-                    )
-                }
-                else {
-                    return <Redirect to="/login" />
-                }
-            }} />
+        <Route render={() => {
+            return (token ? <Route render={props => <ApplicationViews {...props}  />}/> : <Redirect to="/login" />)
+        }} />
 
-            <Route path="/login" render={props => {
-                if (token) {
-                    return <Redirect to="/explore" />
-                }
-                else {
-                    return (
-                        <Login {...props} />
-                    )
-                }
-            }} />
+        <Route path="/login" render={props => {
+            return (token ? <Redirect to="/items" /> : <Login {...props} />)
+        }} />
 
-            <Route path="/register" render={props => {
-                if (token) {
-                    return <Redirect to="/explore" />
-                }
-                else {
-                    return <Register {...props}/>
-                }
-            }} />
-        </UserProvider>
+        <Route path="/register" render={props => {
+            return (token ? <Redirect to="/items" /> : <Register {...props}/>)
+        }} />
     </>)
 }
 

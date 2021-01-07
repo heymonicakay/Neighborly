@@ -28,7 +28,7 @@ export const User = (props) => {
             if(activeAdmins.length === 1 && props.user.is_active){
                 window.alert('please assign another active admin')
             }else{
-    
+
                 let prompt = window.confirm("Are you sure you want to change this user's account status?");
                 if( prompt === true ) {
                     changeUserActive(id)
@@ -48,7 +48,7 @@ export const User = (props) => {
 
             changeUserType(props.user.id)
         }
-        
+
     }
 
     return (
@@ -84,7 +84,7 @@ export const User = (props) => {
                     </label>
                 </div>
                 </td>
-                
+
             </tr>
         </>
     )
