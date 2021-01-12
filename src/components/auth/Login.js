@@ -8,7 +8,7 @@ export const Login = (props) => {
     const password = useRef(null)
     const invalidDialog = useRef(null)
 
-    const {getCurrentUser} = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -27,13 +27,14 @@ export const Login = (props) => {
         .then(res => {
             if ("valid" in res && res.valid && "token" in res) {
                 localStorage.setItem("token", res.token)
-                getCurrentUser(res.token).then(props.history.push("/items"))
+                props.history.push("/items")
             }
             else {
                 invalidDialog.current.showModal();
             }
         })
     }
+
 
     return (
         <main className="container--login">

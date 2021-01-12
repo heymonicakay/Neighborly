@@ -29,19 +29,12 @@ export const UserProvider = (props) => {
             }
         })
             .then(res => res.json()).then(res=>{
-                console.log(res)
                 setCurrentUser(res)
+                return res
             })
     }
 
-    const getUserMessages = () => {
-        return fetch("http://localhost:8000/messages", {
-            headers: {
-                "Authorization": `Token ${token}`,
-                "Content-Type": "application/json"
-            }
-        }).then(res => res.json())
-    }
+
     // const getUserProfile = (userId) => {
     //     return fetch(`http://localhost:8000/users/${userId}`, {
     //         headers: {
@@ -92,11 +85,6 @@ export const UserProvider = (props) => {
     //         .then(res => res.json())
     // }
 
-    useEffect(()=>{
-        console.log(token, "TOKEN")
-        token && getCurrentUser(token)
-    }, [])
-
 
     return (
         <UserContext.Provider value={{
@@ -106,8 +94,7 @@ export const UserProvider = (props) => {
             getCurrentUser,
             setCurrentUser,
             token,
-            setToken,
-            getUserMessages
+            setToken
             // changeUserType,
             // changeUserActive,
             // getUserProfile,

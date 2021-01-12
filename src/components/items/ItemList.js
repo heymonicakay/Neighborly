@@ -10,7 +10,7 @@ import Item from "./Item"
 export const ItemList = (props) => {
 // CONTEXT
     const {getItems, getItemsByUser, getItemsByCategory} = useContext(ItemContext)
-    const {currentUser} = useContext(UserContext)
+    const { getCurrentUser } = useContext(UserContext)
 // STATE
     const [ filteredItems, setFilteredItems ] = useState([])
     const [ byUser, setItemsByUser ] = useState([])
@@ -18,19 +18,14 @@ export const ItemList = (props) => {
     const [ myItems, setMyItems ] = useState([])
     const [ subscribed, setSubscribed ] = useState([])
     const [ allItems, setAllItems ]=useState([])
+    const [ currentUser, setCurrentUser ] = useState({})
 
     useEffect(()=>{
+        getCurrentUser(localStorage.getItem("token")).then(setCurrentUser)
         if(props.allItems){
             getItems().then(items=>{
-                console.log(items, "ALL ITEMS RES")
                 setAllItems(items)
             })
-        }
-        if(props.myItems){
-                getItemsByUser(currentUser.id).then( items =>{
-                    setMyItems(items)
-                })
-
         }
         if(props.byUser){
             const userId = parseInt(props.match.params.userId)
@@ -45,6 +40,16 @@ export const ItemList = (props) => {
             })
         }
     }, [])
+
+    useEffect(()=>{
+        if(props.myItems && currentUser){
+            console.log(currentUser, "CurrentUser")
+            getItemsByUser(currentUser && currentUser.id).then( items =>{
+                setMyItems(items)
+            })
+
+        }
+    }, [currentUser])
 
     useEffect(()=>{
         if(subscribed && currentUser && currentUser.is_staff){
@@ -97,13 +102,13 @@ export const ItemList = (props) => {
     return (
         <>
         <div className="mainItemContainer">
-            {filteredItems.map(p => {
+            {currentUser &&
+            filteredItems.map(p => {
 
                 return (
                     <Item
                     key={p.id}
                     currentUser={currentUser}
-                    admin={currentUser.user.is_staff}
                     is_owner={currentUser.id === p.owner.id}
                     item={p}
                     {...props}/>

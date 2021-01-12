@@ -4,6 +4,7 @@ import { CategoryProvider } from "../categories/CategoryProvider";
 import { ItemTagProvider } from "../ItemTags/ItemTagProvider";
 import { TagProvider } from "../tags/TagProvider";
 import { ItemProvider } from "../items/ItemProvider";
+import { MessageProvider } from "../messages/MessageProvider";
 import { ItemDetails } from "../items/ItemDetail"
 import { ItemForm } from "../items/ItemForm";
 import { ItemList } from "../items/ItemList";
@@ -18,6 +19,7 @@ export default () => {
         <ItemTagProvider>
         <TagProvider>
         <ItemProvider>
+        <MessageProvider>
             <Route path="/items/:itemId(\d+)" render={props => (
                 <div className="main-wrap">
                     <div className="top-spacer"></div>
@@ -28,21 +30,17 @@ export default () => {
 
             <Route exact path="/new_item" render={props => (
                 <div className="main-wrap">
-                    <div className="top-spacer"></div>
                     <div className="mid-section">
                         <ItemForm {...props} />
                     </div>
-                    <div className="bottom-spacer"></div>
                 </div>
             )} />
 
             <Route exact path="/items/edit/:itemId(\d+)" render={props =>(
                 <div className="main-wrap">
-                    <div className="top-spacer"></div>
                     <div className="mid-section">
                         <ItemForm {...props} />
                     </div>
-                    <div className="bottom-spacer"></div>
                 </div>
             )} />
 
@@ -89,6 +87,7 @@ export default () => {
                 <div className="bottom-spacer"></div>
             </div>
         )} />
+        </MessageProvider>
         </ItemProvider>
         </TagProvider>
         </ItemTagProvider>

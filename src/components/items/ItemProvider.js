@@ -109,6 +109,7 @@ export const ItemProvider = (props) => {
 
     const getSubscribedItems = (userId) => {
         return fetch(`${api}?subscribed=${userId}`, {
+
         headers: {
             "Authorization": `Token ${token}`,
             "Content-Type": "application/json"
@@ -117,6 +118,26 @@ export const ItemProvider = (props) => {
         .then(res => res.json())
     }
 
+    const reserveItem = (itemId, reservation) => {
+        return fetch(`${api}/${itemId}/reserve`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Token ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(reservation)
+    })
+        .then(res => res.json())
+    }
+    // URL: http://localhost:8000/items/1/reserve
+    // Request Method: POST
+    // Payload: reservation object
+    //     {
+            // "requested_start": "2021-01-15",
+            // "requested_end": "2021-01-16",
+            // "start": null,
+            // "end": null
+    //     }
 
     return (
         <ItemContext.Provider value={{
@@ -132,7 +153,8 @@ export const ItemProvider = (props) => {
             item,
             getSubscribedItems,
             getItemsByUser,
-            setItems
+            setItems,
+            reserveItem
         }}>
             {props.children}
         </ItemContext.Provider>

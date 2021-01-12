@@ -53,25 +53,31 @@ export const ItemForm = (props) => {
     }
 
     const constructNewItem = () => {
-        if (item.title && item.category_id && item.content) {
+        if (item.name && item.category_id && item.description) {
             if (editMode) {
                 updateItem({
                     id: item.id,
-                    title: item.title,
-                    content: item.content,
+                    name: item.name,
+                    description: item.description,
+                    brand: "brand name",
+                    listed_date: null,
+                    serial_number: "0000000000000",
+                    condition_id: 2,
                     category_id: parseInt(item.category_id),
                     publication_date: item.publication_date,
-                    item_img: base64
                 }).then(() => {
                     props.history.push(`/items/${item.id}`)
                 })
             } else {
                 const newItemObject = {
-                    title: item.title,
-                    content: item.content,
+                    name: item.name,
+                    description: item.description,
                     category_id: parseInt(item.category_id),
+                    brand: "brand name",
+                    listed_date: null,
+                    serial_number: "0000000000000",
+                    condition_id: 2,
                     publication_date: new Date(Date.now()).toISOString().split('T')[0],
-                    item_img: base64,
                     selected_tags: selectedTags
 
                 }
@@ -79,6 +85,7 @@ export const ItemForm = (props) => {
                     .then(resId => {
                         props.history.push(`/items/${resId}`)
                     })
+                console.log(newItemObject, "NEW ITEM OBJECT")
             }
         } else {
             window.alert("please fill in all fields")
@@ -88,48 +95,54 @@ export const ItemForm = (props) => {
     return (
 
         <form className="form new_item_form" id="itemForm">
-            <p className="itemForm_title">{editMode ? "Update Item" : "Create a New Item"}</p>
-                <div className="form-div">
-                    <input type="text" name="title" required className="form-control" id="title"
-                        placeholder="Item Title"
-                        defaultValue={item.title}
-                        onChange={handleControlledInputChange}>
-                    </input>
-                </div>
-                {editMode && item.image_url != null ? <img className="formImage" src={item.image_url}></img> : null}
-                <div className="header-image-div">
-                    <input type="file" id="profle_image" name="profile_img"
-                        onChange={(evt) => {
-                            createItemImageJSON(evt)
-                    }} />
-                </div>
-                <div className="form-div">
-                        <select name="category_id" className="form-control" id="item"
-                            value={item.category_id}
-                            onChange={handleControlledInputChange}>
-                            <option value="0">Choose a category...</option>
-                            {categories.map(c => (
-                                <option key={c.id} value={c.id}>
-                                    {c.label}
-                                </option>
-                            ))}
-                        </select>
-                </div>
-                <div className="form-div">
-                    <textarea type="text" name="content" required className="form-control" id="content"
-                        placeholder="Item content..."
-                        defaultValue={item.content}
-                        onChange={handleControlledInputChange}>
-                    </textarea>
-                </div>
+            <p className="itemForm_title">
+                {editMode ? "Update Item" : "Create a New Item"}
+            </p>
+            <div className="form-div">
+                <input type="text" name="name" required className="form-control" id="title"
+                    placeholder="Item Name"
+                    defaultValue={item.name}
+                    onChange={handleControlledInputChange}>
+                </input>
+            </div>
+                {/* {editMode && item.image_url != null ? <img className="formImage" src={item.image_url}></img> : null} */}
+            <div className="header-image-div">
+                {/* <input type="file" id="profle_image" name="profile_img"
+                    onChange={(evt) => {
+                        createItemImageJSON(evt)
+                }} /> */}
+            </div>
+            <div className="form-div">
+                <select name="category_id" className="form-control" id="item"
+                    value={item.category_id}
+                    onChange={handleControlledInputChange}>
+                    <option value="0">Choose a category...</option>
+                    {categories.map(c => (
+                        <option key={c.id} value={c.id}>
+                            {c.label}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="form-div">
+                <textarea type="text" name="description" required className="form-control" id="content"
+                    placeholder="Item description..."
+                    defaultValue={item.description}
+                    onChange={handleControlledInputChange}>
+                </textarea>
+            </div>
             <div className="tag-container">
                 {
-                    tags.map(t => <TagBoxes tag={t} selectedTags={selectedTags} setTags={setTags}  item={item} editMode={editMode} {...props} />)
+                    tags.map(t => <TagBoxes
+                        tag={t}
+                        selectedTags={selectedTags}
+                        setTags={setTags}
+                        item={item}
+                        editMode={editMode}
+                        {...props} />)
                 }
-
             </div>
-
-            <button type="submit"
+            <button
                 onClick={evt => {
                     evt.preventDefault()
                     constructNewItem()
@@ -138,7 +151,6 @@ export const ItemForm = (props) => {
                 className="btn item_submit_btn">
                 Save Item
             </button>
-
-        </form >
+        </form>
     )
 }

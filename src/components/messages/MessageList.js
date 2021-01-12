@@ -1,116 +1,64 @@
 // All messages view shows all published messages
 import React, { useContext, useEffect, useState } from "react"
-import { UserContext } from "./UserProvider"
 import "./Message.css";
-// import {AdminMessageApproval} from "./AdminMessageApproval"
-import { UserContext } from "../users/UserProvider";
+import { MessageContext } from "./MessageProvider";
+import { UserContext } from "../users/UserProvider"
 import Message from "./Message"
+import Reservation from "./Reservation"
 
 
 export const MessageList = (props) => {
 // CONTEXT
-    const {getMessages, getMessagesByUser, getMessagesByCategory} = useContext(MessageContext)
+    const {getUserMessages, getMessageSentByUser, getReservations} = useContext(MessageContext)
     const {currentUser} = useContext(UserContext)
 // STATE
-    const [ filteredMessages, setFilteredMessages ] = useState([])
-    const [ byUser, setMessagesByUser ] = useState([])
-    const [ byCategory, setByCategory ] = useState([])
-    const [ myMessages, setMyMessages ] = useState([])
-    const [ subscribed, setSubscribed ] = useState([])
-    const [ allMessages, setAllMessages ]=useState([])
+    const [ messages, setMessages ] = useState([])
+    const [ reservations, setReservations ] = useState([])
 
     useEffect(()=>{
-        if(props.allMessages){
-            getMessages().then(messages=>{
-                console.log(messages, "ALL ITEMS RES")
-                setAllMessages(messages)
-            })
-        }
-        if(props.sent){
-                getMessagesByUser(currentUser.id).then( messages =>{
-                    setMyMessages(messages)
+        // if(props.sent){
+        //     getMessageSentByUser().then( msgs =>{
+        //             setMessages(msgs)
+        //         })
+        // }
+        // else{
+            getReservations().then(res=>{
+                const filtered = res.filter(r => {
+
+                    if( r.item.owner.id === currentUser.id || r.user.id === currentUser.id){
+                        return r
+                    }
                 })
-
-        }
-        if(props.byUser){
-            const userId = parseInt(props.match.params.userId)
-            getMessagesByUser(userId).then((messages)=>{
-                setMessagesByUser(messages)
+                setReservations(filtered)
             })
-        }
-        if(props.byCategory){
-            const catId = parseInt(props.match.params.categoryId)
-            getMessagesByCategory(catId).then((messages)=>{
-                setByCategory(messages)
-            })
-        }
+        // }
     }, [])
-
-    useEffect(()=>{
-        if(subscribed && currentUser && currentUser.is_staff){
-            setFilteredMessages(subscribed)
-        }
-        else{
-            const filtered = subscribed.filter(p=> p.listed_date !== null) || []
-            setFilteredMessages(filtered)
-        }
-    }, [subscribed])
-
-    useEffect(()=>{
-        if(allMessages && currentUser){
-            if(currentUser.is_staff){
-                setFilteredMessages(allMessages)
-            }
-            else{
-                // const filtered = allMessages.filter(p=> p.listed_date === null) || []
-                setFilteredMessages(allMessages)
-            }
-        }
-    }, [allMessages])
-
-    useEffect(()=>{
-        if(byCategory && currentUser && currentUser.is_staff){
-            setFilteredMessages(byCategory)
-        }
-        else{
-            const filtered = byCategory.filter(p => p.listed_date !== null) || []
-            setFilteredMessages(filtered)
-        }
-    }, [byCategory])
-
-    useEffect(()=>{
-        if(myMessages && currentUser){
-            setFilteredMessages(myMessages)
-        }
-    }, [myMessages])
-
-    // useEffect(()=>{
-    //     if(byUser && currentUser && currentUser.is_staff){
-    //         setFilteredMessages(byUser)
-    //     }
-    //     else{
-    //         const filtered = byUser.filter(p=> p.listed_date !== null) || []
-    //         setFilteredMessages(filtered)
-    //     }
-    // }, [byUser])
+console.log(reservations,"RESERVATIONS")
 
     return (
-        <>
+
         <div className="mainMessageContainer">
-            {filteredMessages.map(p => {
+        <button className="btn" onClick={()=>{
+            props.history.push('/messages/sent')
+        }}>Sent Messages</button>
+        <button className="btn" onClick={()=>{
+            props.history.push('/messages')
+        }}>All Messages</button>
+        {reservations ?
+        reservations.map(p => {
+                console.log(messages, "MESSAGES")
 
                 return (
-                    <Message
+                    <Reservation
                     key={p.id}
                     currentUser={currentUser}
-                    admin={currentUser.user.is_staff}
-                    is_owner={currentUser.id === p.owner.id}
-                    message={p}
+                    reservation={p}
                     {...props}/>
                 )
-            })
-            }
+            }).reverse()
+        : "No reservations"
+        }
         </div>
-        </>
+
     )
 }

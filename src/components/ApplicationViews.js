@@ -3,11 +3,15 @@ import "./Neighborly.css";
 import UserProfileRoutes from "./routes/UserProfileRoutes";
 import ItemRoutes from "./routes/ItemRoutes";
 import NavRoutes from "./routes/NavRoutes"
-
+import MessageRoutes from "./routes/MessageRoutes"
 import { UserContext } from "./users/UserProvider"
 
 export const ApplicationViews = (props) => {
-    const {currentUser} = useContext(UserContext)
+    const {getCurrentUser, currentUser} = useContext(UserContext)
+
+    useEffect(()=>{
+        getCurrentUser(localStorage.getItem("token"))
+    },[])
 
     return (
         <>
@@ -15,6 +19,7 @@ export const ApplicationViews = (props) => {
                 <NavRoutes />
                 <UserProfileRoutes currentUser={currentUser} />
                 <ItemRoutes />
+                <MessageRoutes />
             </main>
         </>
     )

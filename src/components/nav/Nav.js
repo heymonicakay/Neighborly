@@ -6,7 +6,7 @@ import { UserContext } from "../users/UserProvider"
 export const Nav = (props) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [admin, setAdmin] = useState(false)
-    const {currentUser, getCurrentUser} = useContext(UserContext)
+    const {currentUser, setCurrentUser, getCurrentUser} = useContext(UserContext)
 
     useEffect(()=>{
         getCurrentUser()
@@ -22,6 +22,7 @@ export const Nav = (props) => {
     }, [])
 
     const handleLogout = () => {
+        setCurrentUser({user:{}, images:{}})
         localStorage.clear()
     }
 
@@ -88,7 +89,7 @@ export const Nav = (props) => {
                                     props.history.push("/login")
                                 }
                             }}>
-                                {loggedIn ? "Logout" : "Get Sarted"}
+                                {loggedIn ? "Logout" : "Get Started"}
                             </button>
                         </div>
                     </div>
