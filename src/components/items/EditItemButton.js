@@ -9,6 +9,7 @@ export const EditDeleteItemButton = (props) => {
         }
         else{
             props.handleClick()
+            props.setItemTBD(props.item)
         }
     }
 

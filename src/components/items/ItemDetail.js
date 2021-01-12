@@ -10,16 +10,27 @@ import Reactions from "./Reaction"
 
 
 export const ItemDetails = (props) => {
-    const { getItemById, deleteItem, publishItem, item } = useContext(ItemContext)
+    const { getItems, deleteItem } = useContext(ItemContext)
     // const { reactions, getReactionsByItem, addReaction } = useContext(ReactionContext)
-    const { currentUser } = useContext(UserContext)
+    const [item, setItem] = useState({})
+    const [items, setItems] = useState([])
+    const itemId = parseInt(props.match.params.itemId)
 
+    const { currentUser } = useContext(UserContext)
     const deleteItemDialog = useRef(null)
-    useEffect(() => {
-        const itemId = parseInt(props.match.params.itemId)
-        // getReactionsByItem(itemId)
-        getItemById(itemId)
+
+    useEffect(()=>{
+        getItems().then(r =>{
+            setItems(r)
+        })
     }, [])
+    console.log(items, "ITEMS")
+    useEffect(() => {
+        // getReactionsByItem(itemId)
+        const itemObj = items.filter(i => i.id === itemId)
+        console.log(itemObj,"ITEM OBJECT")
+        setItem(itemObj)
+    }, [items])
 
     // const handleReact = (r) => {
     //     const itemIdObj = { item_id: item.id }
@@ -36,6 +47,10 @@ export const ItemDetails = (props) => {
 
     return (
         <>
+        {item ?
+        console.log(item, "item")
+            (<>
+
             <dialog className="dialog dialog--deleteItem" ref={deleteItemDialog}>
                 <div>
                     Are you sure you want to delete this item?
@@ -51,14 +66,10 @@ export const ItemDetails = (props) => {
             <div className="itemFlex">
                 <div className="manage-buttons">
                     <EditDeleteItemButton
-                    admin={currentUser.is_staff}
-                    is_author={currentUser.id === item.rareuser.id}
                     item={item}
                     edit
                     {...props}/>
                     <EditDeleteItemButton
-                    admin={currentUser.is_staff}
-                    is_author={currentUser.id === item.rareuser.id}
                     item={item}
                     handleClick={handleClick}
                     delete
@@ -66,26 +77,25 @@ export const ItemDetails = (props) => {
                 </div>
                 <div className="itemDetailContainer">
                     <div className="itemTitleContainer">
-                        <h2 className="itemTitle">{item.title}</h2>
-                        <p>{item.category.label}</p>
+                        <h2 className="itemTitle">{item.name}</h2>
+                        <p>{item.category ? item.category.label : null}</p>
 
                     </div>
-                    {item.image_url
-                        ?
+                    {item.itemimages ?
                         <div className="img-div">
-                            <img className="item-img" src={item.image_url} />
+                            <img className="item-img" src={item.itemimages[0].image} />
                         </div>
-                        :null
+                        : null
                     }
                     <div className="author_date_container">
                         <p className="authorName">
-                            <Link className="itemLink" to={ `/items/user/${item.rareuser.id}` }>
-                                by {item.author_username}
+                            <Link className="itemLink" to={ `/items/user/${item.owner && item.owner.id}` }>
+                                by {item && item.owner.user.username}
                             </Link>
                         </p>
-                        <div className="btn view-comments-btn" onClick={() => props.history.push(`/comments/${item.id}`)}>
+                        {/* <div className="btn view-comments-btn" onClick={() => props.history.push(`/comments/${item.id}`)}>
                             View Comments
-                        </div>
+                        </div> */}
 
                         {/* <div className='reactionContainer'>
                             {reactions.map(r => {
@@ -98,17 +108,20 @@ export const ItemDetails = (props) => {
                         </div> */}
                     </div>
                     <div className="itemContent">
-                        <p>{item.content}</p>
+                        <p>{item && item.descriptions}</p>
                     </div>
                 </div>
                 <div className="itemTagContainer">
                     <ItemTags
                     {...props}
                     itemId={item.id}
-                    isUserAuthor={item.is_user_author} />
+                    isUserOwner={item.owner.id === currentUser.id} />
                 </div>
 
             </div>
+            </>)
+        : null
+        }
         </>
     )
 }

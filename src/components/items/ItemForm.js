@@ -6,14 +6,16 @@ import { TagBoxes } from "../tags/TagCheckbox"
 import "./Item.css"
 
 export const ItemForm = (props) => {
-    const { items, getItems, addItem, updateItem } = useContext(ItemContext)
+    const { getItems, addItem, updateItem } = useContext(ItemContext)
     const { categories, getCategories } = useContext(CategoryContext)
     const { tags, getTags } = useContext(TagContext)
     const [selectedTags, setTags] = useState([])
-    const [item, setItem] = useState({rareuser: {}, category: {}})
+    const [item, setItem] = useState({})
+    const [items, setItems] = useState([])
     const [base64, setBase64] = useState(null)
 
     const editMode = props.match.params.hasOwnProperty("itemId")
+    console.log(editMode, "Edit Mode")
 
     const handleControlledInputChange = (eve) => {
         const newItem = Object.assign({}, item)
@@ -28,14 +30,14 @@ export const ItemForm = (props) => {
             setItem(selectedItem)
         }
     }
-
     useEffect(() => {
-        getItems()
-        .then(getCategories)
-        .then(getTags)
+        getItems().then(setItems)
+        getCategories()
+        getTags()
     }, [])
 
     useEffect(() => {
+        console.log(items, "ITEMS")
         getItemInEditMode()
     }, [items])
 
@@ -66,7 +68,7 @@ export const ItemForm = (props) => {
                     category_id: parseInt(item.category_id),
                     publication_date: item.publication_date,
                 }).then(() => {
-                    props.history.push(`/items/${item.id}`)
+                    props.history.push(`/items`)
                 })
             } else {
                 const newItemObject = {
@@ -83,7 +85,7 @@ export const ItemForm = (props) => {
                 }
                 addItem(newItemObject)
                     .then(resId => {
-                        props.history.push(`/items/${resId}`)
+                        props.history.push(`/items`)
                     })
                 console.log(newItemObject, "NEW ITEM OBJECT")
             }
@@ -92,6 +94,7 @@ export const ItemForm = (props) => {
         }
 
     }
+    console.log(item.category_id, "item.category")
     return (
 
         <form className="form new_item_form" id="itemForm">
@@ -113,9 +116,12 @@ export const ItemForm = (props) => {
                 }} /> */}
             </div>
             <div className="form-div">
-                <select name="category_id" className="form-control" id="item"
-                    value={item.category_id}
-                    onChange={handleControlledInputChange}>
+                <select
+                name="category_id"
+                className="form-control"
+                id="item"
+                value={item.category_id}
+                onChange={handleControlledInputChange}>
                     <option value="0">Choose a category...</option>
                     {categories.map(c => (
                         <option key={c.id} value={c.id}>

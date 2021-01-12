@@ -1,5 +1,5 @@
 // All items view shows all published items
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { ItemContext } from "./ItemProvider"
 import "./Item.css";
 // import {AdminItemApproval} from "./AdminItemApproval"
@@ -9,11 +9,14 @@ import Item from "./Item"
 
 export const ItemList = (props) => {
 // CONTEXT
-    const {getItems, getItemsByUser, getItemsByCategory} = useContext(ItemContext)
+    const {getItems, deleteItem, getItemsByUser, getItemsByCategory} = useContext(ItemContext)
     const { getCurrentUser } = useContext(UserContext)
+        const deleteItemDialog = useRef(null)
+
 // STATE
     const [ filteredItems, setFilteredItems ] = useState([])
     const [ byUser, setItemsByUser ] = useState([])
+    const [ itemTBD, setItemTBD ] = useState({})
     const [ byCategory, setByCategory ] = useState([])
     const [ myItems, setMyItems ] = useState([])
     const [ subscribed, setSubscribed ] = useState([])
@@ -99,8 +102,29 @@ export const ItemList = (props) => {
     //     }
     // }, [byUser])
 
+    const handleDelete = () => {
+        console.log(itemTBD, "ITEM TBD")
+        deleteItem(itemTBD.id).then(() => window.location.reload())
+        deleteItemDialog.current.close()
+    }
+
+    const handleClick = () => {
+        deleteItemDialog.current.showModal()
+    }
+
     return (
         <>
+        <dialog className="dialog dialog--deleteItem" ref={deleteItemDialog}>
+            <div>
+                Are you sure you want to delete this item? <br /> <center><i>{itemTBD.name}</i></center>
+            </div>
+            <button className="button--closeDialog btn" onClick={() => deleteItemDialog.current.close()}>
+                Close
+            </button>
+            <button className="button--deleteDialog btn" onClick={() => handleDelete(itemTBD)}>
+                Delete Item
+            </button>
+        </dialog>
         <div className="mainItemContainer">
             {currentUser &&
             filteredItems.map(p => {
@@ -111,6 +135,9 @@ export const ItemList = (props) => {
                     currentUser={currentUser}
                     is_owner={currentUser.id === p.owner.id}
                     item={p}
+                    setItemTBD={setItemTBD}
+                    itemTBD={itemTBD}
+                    handleClick={handleClick}
                     {...props}/>
                 )
             })

@@ -20,9 +20,7 @@ export default (props) => {
     const [msg, setMsg] = useState({})
     const [reservationId, setReservationId] = useState("")
     const { currentUser } = useContext(UserContext)
-    const handleDelete = (p) => {
-        deleteItem(p.id).then(()=> props.history.push("/items"))
-    }
+
     const reserveClick = () => {
         reserveItemDialog.current.showModal();
     }
@@ -57,17 +55,6 @@ export default (props) => {
 
     return (
         <>
-        <dialog className="dialog dialog--deleteItem" ref={deleteItemDialog}>
-            <div>
-                Are you sure you want to delete this item?
-            </div>
-            <button className="button--closeDialog btn" onClick={() => deleteItemDialog.current.close()}>
-                Close
-            </button>
-            <button className="button--deleteDialog btn" onClick={() => handleDelete(props.item)}>
-                Delete Item
-            </button>
-        </dialog>
 
         <dialog className="dialog dialog--deleteItem" ref={reserveItemDialog}>
             <div>
@@ -93,6 +80,8 @@ export default (props) => {
 
                 <EditDeleteItemButton
                 item={props.item}
+                handleClick={props.handleClick}
+                setItemTBD={props.setItemTBD}
                 {...props}/>
             </div>
             <div className="item-list-single">

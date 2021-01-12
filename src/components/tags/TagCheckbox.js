@@ -3,13 +3,17 @@ import {ItemTagContext} from "../ItemTags/ItemTagProvider"
 
 export const TagBoxes = (props) => {
     const [checked, setChecked] = useState(false)
-    const { removeitemTag, additemTag, itemTags, getItemTagsByPost } = useContext(ItemTagContext)
+    const { removeitemTag, addItemTag, itemTags, getItemTagsByItem } = useContext(ItemTagContext)
 
     const tag = props.tag
     const selectedTags = props.selectedTags
 
     useEffect(() => {
-        let itemTag = itemTags.find(pt => pt.tag_id === tag.id)
+        let itemTag = itemTags.find(it => {
+            if(it.tag.id === tag.id){
+                return it
+            }
+        })
         if(itemTag){
             setChecked(true)
         }
@@ -18,7 +22,7 @@ export const TagBoxes = (props) => {
     useEffect(() => {
         if(props.editMode && props.item.id){
 
-            getItemTagsByPost(props.item.id)
+            getItemTagsByItem(props.item.id)
         }
         else{
             setChecked(false)
@@ -31,17 +35,19 @@ export const TagBoxes = (props) => {
             if(props.editMode){
                 const founditemTag = itemTags.find(pt => pt.tag_id === tag.id && pt.item_id === props.item.id)
                 removeitemTag(founditemTag.id)
-            }else{
+            }
+            else{
             let newArray = selectedTags.filter(t => tag.id !== t.id)
             props.setTags(newArray)
             }
-        }else{
+        }
+        else{
             if(props.editMode){
                 const newitemTag = ({
                     tag_id: tag.id,
                     item_id:  props.item.id
                 })
-                additemTag(newitemTag)
+                addItemTag(newitemTag)
             }
             let newArray = selectedTags
             newArray.push(tag)

@@ -50,7 +50,6 @@ export const ItemProvider = (props) => {
             method: "DELETE",
             headers: {"Authorization": `Token ${token}`},
         })
-        .then(getItems)
     }
 
     const getItemsByUser = (userId) => {
