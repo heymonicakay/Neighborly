@@ -1,10 +1,10 @@
-## Neighborly - Work In Progress
+## Neighborly
 
 <b style="font-size: 20px;"><i>A peer-to-peer commodity sharing application!</i></b>
 
 ### Application Overview
 
-Neighborly is a peer-to-peer lending platform that lets users borrow items from other users in the Nashville area. The current iteration of the application allows users to post items they are willing to lend, request to borrow items posted by other users, and communicate with one another through the internal messaging system to make pick-up and drop-off arrangements.
+Neighborly is a social platform that allows users to lend and borrow items in the Nashville area. The current iteration of the application allows users to post items they are willing to lend, request to borrow items posted by other users, and communicate with one another through the internal messaging system to arrange pick-up and drop-off.
 
 ## Technologies Used
 ![HTML5](https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Git](https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/VSCode%20-%23007ACC.svg?&style=for-the-badge&logo=visual-studio-code&logoColor=white)
