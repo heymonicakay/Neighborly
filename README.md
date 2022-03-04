@@ -1,6 +1,6 @@
 ## Neighborly
 
-<b style="font-size: 20px;"><i>A peer-to-peer commodity sharing application!</i></b>
+<b style="font-size: 20px;"><i>A peer-to-peer lending platform!</i></b>
 
 ### Application Overview
 
